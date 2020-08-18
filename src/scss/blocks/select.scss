@@ -1,0 +1,43 @@
+.select ul {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  // list-style-type: none;
+  // border: 1px solid red;
+  width: 150px;
+  // background-color: $white;
+}
+
+/* Пункт списка: */
+.select ul li {
+  padding: 5px;
+
+}
+
+/* Наведение на пункт списка: */
+.select ul li:hover {
+  background: #0095ff;
+  color: #fff;
+}
+
+
+/* Выбор option "Please Select": */
+.select__gap {
+  position: relative;
+  padding: 5px;
+  width: 200px;
+  border: 1px solid #ccc;
+  padding-right: 10px;
+
+}
+
+/* Стрелочка: */
+.select__gap:after {
+  content: '';
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  border-top: 5px solid #000;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+}

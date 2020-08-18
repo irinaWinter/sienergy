@@ -1,0 +1,19 @@
+@media (min-width: 1500px) {
+  .slogan__text {
+    position: relative;
+    margin: 0;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+  }
+
+  .slogan__text::before {
+    content: "";
+    position: absolute;
+    left: -27px;
+    width: 16px;
+    height: 14px;
+    background-image: url("img/heart.svg");
+    background-size: contain;
+  }
+}

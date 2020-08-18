@@ -4,6 +4,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserWebpackPlugin = require('terser-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -85,6 +86,15 @@ const plugins = () => {
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: filename('css')
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: path.resolve(__dirname, 'src/logo.svg'), to: path.resolve(__dirname, 'dist') },
+        { from: path.resolve(__dirname, 'src/water.png'), to: path.resolve(__dirname, 'dist') },
+        { from: path.resolve(__dirname, 'src/vk-icon.svg'), to: path.resolve(__dirname, 'dist') },
+        { from: path.resolve(__dirname, 'src/fb-icon.svg'), to: path.resolve(__dirname, 'dist') },
+        { from: path.resolve(__dirname, 'src/img'), to: path.resolve(__dirname, 'dist') }
+      ]
     })
   ]
 
@@ -107,18 +117,27 @@ module.exports = {
     extensions: ['.js', '.json', '.jpg'],
     alias: {
       '@models': path.resolve(__dirname, 'src/models'),
-      '@': path.resolve(__dirname, 'src')
+      '@': path.resolve(__dirname, 'src'),
+      '@img': path.resolve(__dirname, './img'),
     }
   },
   optimization: optimization(),
   devServer: {
     port: 4200,
-    hot: isDev
+    hot: isDev,
+    overlay: true
   },
   devtool: isDev ? 'source-map' : '',
   plugins: plugins(),
   module: {
     rules: [
+      {
+        test: /\.(png|jpg|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+        }  
+      },
       {
         test: /\.css$/,
         use: cssLoaders()
