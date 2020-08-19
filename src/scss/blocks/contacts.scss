@@ -54,6 +54,10 @@
   }
 
   .contacts__item {
-    margin-left: 66px;
+    margin-left: 45px;
+  }
+
+  .contacts__item:not(:first-child) {
+    margin-top: 0;
   }
 }

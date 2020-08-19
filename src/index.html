@@ -14,15 +14,29 @@
           <h1 class="sienergy__heading">Кремниевая родниковая вода «Sienergy»</h1>
         </div>
         <div class="header__info-section">
-          <section class="header__language language">
+          <section class="header__language-select select">
             <h2 class="visually-hidden">Выбор языка</h2>
-            <div class="language__select-wrapper">
-              <select class="language__select" name="language">
-                <option class="language__option" value="russian" selected>Русский (Россия)</option>
-                <option class="language__option" value="english">Английский (США)</option>
-                <option class="language__option" value="chinese">Китайский (Китай)</option>
-                <option class="language__option" value="azerbaijani">Азербайджанский (Азербайджан)</option>
-              </select>
+            <div class="select__select-box">
+              <div class="select__options">
+                <div class="select__option">
+                  <input class="select__input" type="radio" id="russian" name="language" checked>
+                  <label class="select__label select__label--default-value" for="russian">Русский (Россия)</label>
+                </div>
+                <div class="select__option">
+                  <input class="select__input" type="radio" id="english" name="language">
+                  <label class="select__label" for="english">Английский (США)</label>
+                </div>
+                <div class="select__option">
+                  <input class="select__input" type="radio" id="chinese" name="language">
+                  <label class="select__label" for="chinese">Китайский (Китай)</label>
+                </div>
+                <div class="select__option">
+                  <input class="select__input" type="radio" id="azerbaijani" name="language">
+                  <label class="select__label" for="azerbaijani">Азербайджанский (Азербайджан)</label>
+                </div>
+              </div>
+              <div class="select__selected">
+              </div>
             </div>
           </section>
           <!-- проверить -->

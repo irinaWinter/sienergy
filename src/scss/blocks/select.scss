@@ -1,43 +1,99 @@
-.select ul {
-  position: absolute;
-  padding: 0;
+.select__heading {
   margin: 0;
-  // list-style-type: none;
-  // border: 1px solid red;
-  width: 150px;
-  // background-color: $white;
+  color: #b0b0b0;
+  font-size: 12px;
+  font-weight: 400;
 }
 
-/* Пункт списка: */
-.select ul li {
-  padding: 5px;
-
-}
-
-/* Наведение на пункт списка: */
-.select ul li:hover {
-  background: #0095ff;
-  color: #fff;
-}
-
-
-/* Выбор option "Please Select": */
-.select__gap {
+.select__select-box {
   position: relative;
-  padding: 5px;
-  width: 200px;
-  border: 1px solid #ccc;
-  padding-right: 10px;
-
+  display: flex;
+  width: 227px;
+  flex-direction: column;
 }
 
-/* Стрелочка: */
-.select__gap:after {
-  content: '';
+.select__options {
   position: absolute;
-  right: 5px;
-  top: 10px;
-  border-top: 5px solid #000;
-  border-left: 3px solid transparent;
-  border-right: 3px solid transparent;
+  top: 25px;
+  z-index: 1;
+  background-color: $white;
+  color: #5a5a5a;
+  max-height: 0 29px;
+  width: 200px;
+  opacity: 0;
+  transition: all 0.4s;
+  border-radius: 8px;
+  overflow: hidden;
+  order: 1;
+}
+
+.select__selected {
+  border-radius: 8px;
+  margin-bottom: 8px;
+  padding: 0 30px;
+  color: #5a5a5a;
+  text-decoration: underline dotted $accent;
+  text-underline-position: under;
+  font-size: 14px;
+  position: relative;
+  order: 0;
+  cursor: pointer;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    background-image: url("img/globe.svg");
+    background-repeat: no-repeat;
+  }
+}
+
+.select__selected:hover {
+  color: $accent;
+}
+
+.select__options.select__active {
+  max-height: 125px;
+  opacity: 1;
+  overflow-y: scroll;
+}
+
+.select__options.select__active + .select__selected {
+  &::before {
+    background-image: url("img/globe-active.svg");
+  }
+}
+
+.select__options::-webkit-scrollbar {
+  width: 5px;
+}
+
+.select__options::-webkit-scrollbar-thumb {
+  background: #f1f1f1;
+}
+
+.select__option {
+  padding: 12px 30px;
+  cursor: pointer;
+}
+
+.select__option:hover {
+  color: #8e8e8e;
+}
+
+.select__label {
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.select__input {
+  display: none;
+}
+
+.select__input:checked + .select__label {
+  color: $accent;
 }
