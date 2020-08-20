@@ -29,8 +29,6 @@
   const openPopup = (popup) => {
     main.appendChild(popup);
 
-    // Просто закрываю предыдущие окна. Кнопка закрытия остается одна и не нужна будет функция forEach.
-
     const buttonsClose = document.querySelectorAll('.close-button-js');
     buttonsClose.forEach(function(item) {
       item.addEventListener('click', function () {
@@ -53,6 +51,9 @@
 
   const buttonMenuClickHandler = () => {
     openPopup(mobileMenu);
+
+    const languageSelect = document.querySelector('.mobile-menu__language-select');
+    window.makeSelect(languageSelect);
 
     const buttonCallback = document.querySelector('.mobile-menu__callback-button');
     buttonCallback.addEventListener('click', buttonCallbackClickHandler);
@@ -89,7 +90,7 @@
     openPopup(successMessage);
   };
 
-  const buttonSubmitClickHandler = evt => {
+  const buttonSubmitClickHandler = (evt) => {
     submitForm(evt);
   };
 })();

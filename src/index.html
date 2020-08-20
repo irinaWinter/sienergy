@@ -14,6 +14,8 @@
           <h1 class="sienergy__heading">Кремниевая родниковая вода «Sienergy»</h1>
         </div>
         <div class="header__info-section">
+
+          <!-- Выбор языка -->
           <section class="header__language-select select">
             <h2 class="visually-hidden">Выбор языка</h2>
             <div class="select__select-box">
@@ -39,7 +41,8 @@
               </div>
             </div>
           </section>
-          <!-- проверить -->
+
+          <!-- Контактная информация -->
           <section class="header__contacts contacts">
             <h2 class="visually-hidden">Контактная информация</h2>
             <ul class="contacts__list">
@@ -51,11 +54,14 @@
               </li>
             </ul>
           </section>
-          <!-- /проверить -->
+
+          <!-- Слоган -->
           <section class="header__slogan slogan">
             <h2 class="visually-hidden">Слоган</h2>
             <p class="slogan__text">Помогаем быть здоровыми!</p>
           </section>
+
+          <!-- Социальные сети -->
           <section class="header__socials socials">
             <h2 class="socials__heading">Мы в соцсетях</h2>
             <ul class="socials__list">
@@ -67,7 +73,9 @@
               </li>
             </ul>
           </section>
-        </div>  
+        </div>
+
+        <!-- Меню пользователя -->
         <section class="header__user-menu user-menu">
           <h2 class="visually-hidden">Меню пользователя</h2>
           <ul class="user-menu__list">
@@ -84,6 +92,8 @@
           </ul>
         </section>
       </div>
+
+      <!-- Навигация по сайту -->
       <nav class="header__page-menu page-menu">
         <button class="page-menu__button">
           <span class="page-menu__burger burger"></span>Меню
@@ -119,8 +129,10 @@
         </ul>  
       </nav>
     </header>
+
     <!-- Основное содержимое -->
     <main class="page-main">
+
       <!-- Баннер -->
       <section class="banner">
         <ul class="banner__list">
@@ -133,6 +145,7 @@
             </div>  
           </li>
         </ul>
+        <!-- Переключатели слайдов -->
         <ul class="banner__switches switches">
           <li class="switches__item">
             <button class="switches__switch switches__switch--active" aria-label="Показать первый слайд"></button>
@@ -152,6 +165,8 @@
       <div class="popup">
         <div class="popup__mobile-menu mobile-menu">
           <button class="mobile-menu__close-button close-button-js" aria-label="Закрыть окно"></button>
+
+          <!-- Навигация -->
           <nav class="mobile-menu__nav">
             <ul class="mobile-menu__list">
               <li class="mobile-menu__item">
@@ -183,18 +198,37 @@
               </li>
             </ul>
           </nav>
+
           <button class="mobile-menu__callback-button button">Обратный звонок</button>
-          <section class="mobile-menu__language language">
-            <h2 class="language__heading">Выбор языка</h2>
-            <div class="language__select-wrapper">
-              <select class="language__select" name="language">
-                <option class="language__option" value="russian" selected>Русский (Россия)</option>
-                <option class="language__option" value="english">Английский (США)</option>
-                <option class="language__option" value="chinese">Китайский (Китай)</option>
-                <option class="language__option" value="azerbaijani">Азербайджанский (Азербайджан)</option>
-              </select>
-            </div>  
+
+          <!-- Выбор языка -->
+          <section class="mobile-menu__language-select select">
+            <h2 class="visually-hidden">Выбор языка</h2>
+            <div class="select__select-box">
+              <div class="select__options">
+                <div class="select__option">
+                  <input class="select__input" type="radio" id="russian" name="language" checked>
+                  <label class="select__label select__label--default-value" for="russian">Русский (Россия)</label>
+                </div>
+                <div class="select__option">
+                  <input class="select__input" type="radio" id="english" name="language">
+                  <label class="select__label" for="english">Английский (США)</label>
+                </div>
+                <div class="select__option">
+                  <input class="select__input" type="radio" id="chinese" name="language">
+                  <label class="select__label" for="chinese">Китайский (Китай)</label>
+                </div>
+                <div class="select__option">
+                  <input class="select__input" type="radio" id="azerbaijani" name="language">
+                  <label class="select__label" for="azerbaijani">Азербайджанский (Азербайджан)</label>
+                </div>
+              </div>
+              <div class="select__selected">
+              </div>
+            </div>
           </section>
+
+          <!-- Контактная информация -->
           <section class="mobile-menu__contacts contacts">
             <h2 class="visually-hidden">Контактная информация</h2>
             <ul class="contacts__list">

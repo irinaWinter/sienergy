@@ -158,35 +158,35 @@ module.exports = {
         test: /\.(ttf|woff|woff2)$/,
         use: ['file-loader']
       },
-      {
-        test: /\.xml$/,
-        use: ['xml-loader']
-      },
-      {
-        test: /\.csv$/,
-        use: ['csv-loader']
-      },
+      // {
+      //   test: /\.xml$/,
+      //   use: ['xml-loader']
+      // },
+      // {
+      //   test: /\.csv$/,
+      //   use: ['csv-loader']
+      // },
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: jsLoaders()
-      },
-      {
-        test: /\.ts$/,
-        exclude: /node_modules/,
-        loader: {
-          loader: 'babel-loader',
-          options: babaelOptions('@babel/preset-typescript')
-        }
-      },
-      {
-        test: /\.jsx$/,
-        exclude: /node_modules/,
-        loader: {
-          loader: 'babel-loader',
-          options: babaelOptions('@babel/preset-react')
-        }
       }
+      // {
+      //   test: /\.ts$/,
+      //   exclude: /node_modules/,
+      //   loader: {
+      //     loader: 'babel-loader',
+      //     options: babaelOptions('@babel/preset-typescript')
+      //   }
+      // },
+      // {
+      //   test: /\.jsx$/,
+      //   exclude: /node_modules/,
+      //   loader: {
+      //     loader: 'babel-loader',
+      //     options: babaelOptions('@babel/preset-react')
+      //   }
+      // }
     ]
   }
 }

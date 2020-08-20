@@ -1,16 +1,43 @@
-const selected = document.querySelector(".select__selected");
-const optionsContainer = document.querySelector(".select__options");
-const optionsList = document.querySelectorAll(".select__option");
+(function() {
+  const classActive = 'select__active';
 
-selected.innerHTML = document.querySelector(".select__label--default-value").innerHTML;
+  const toggleActive = (optionsContainer) => {
+    optionsContainer.classList.toggle(classActive);
+  };
 
-selected.addEventListener("click", () => {
-  optionsContainer.classList.toggle("select__active");
-});
+  const selectedClickHandler = (optionsContainer) => {
+    toggleActive(optionsContainer);
+  };
 
-optionsList.forEach(o => {
-  o.addEventListener("click", () => {
-    selected.innerHTML = o.querySelector("label").innerHTML;
-    optionsContainer.classList.remove("select__active");
-  });
-});
+  const changeValue = (evt, optionsList, selected, optionsContainer) => {
+    const selectLabel = evt.target.closest('.select__label');
+
+    if (selectLabel || optionsList.contains(selectLabel)) {
+      selected.textContent = selectLabel.textContent;
+      optionsContainer.classList.remove(classActive);
+    }
+  };
+
+  const optionsListClickHandler = (evt, optionsList, selected, optionsContainer) => {
+    changeValue(evt, optionsList, selected, optionsContainer);
+  }
+
+  window.makeSelect = function (select) {
+    const selected = select.querySelector('.select__selected');
+    const optionsContainer = select.querySelector('.select__options');
+    const optionsList = select.querySelector('.select__options');
+
+    selected.textContent = select.querySelector('.select__label--default-value').textContent;
+
+    selected.addEventListener('click', () => {
+      selectedClickHandler(optionsContainer);
+    });
+
+    optionsList.addEventListener('click', (evt) => {
+      optionsListClickHandler(evt, optionsList, selected, optionsContainer);
+    });  
+  };
+
+  const languageSelectHeader = document.querySelector('.header__language-select');
+  window.makeSelect(languageSelectHeader);
+})();
