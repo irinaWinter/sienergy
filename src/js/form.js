@@ -1,4 +1,4 @@
-// import Inputmask from "inputmask";
+import Inputmask from "inputmask";
 
 (function () {
   const callbackTemplate = document.querySelector('#call')
@@ -10,6 +10,11 @@
   window.form = {
     buttonCallbackClickHandler: function () {
       window.popup.open(callback);
+
+      var phoneNumber = document.querySelector('.call__input--phone-number-js');
+
+      var im = new Inputmask('+7 (999) 999-99-99');
+      im.mask(phoneNumber);
 
       const buttonSubmit = document.querySelector('.popup__button');
 
