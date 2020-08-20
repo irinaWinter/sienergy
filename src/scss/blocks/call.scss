@@ -38,17 +38,6 @@
   margin-top: 26px;
 }
 
-.call__item--error {
-  // border: 1px solid #ff5959;
-}
-.call__item--error .call__input::placeholder {
-  color: #ff5959;
-}
-
-.call__item--success .call__input {
-  color: #019ec4;
-}
-
 .call__label {
   position: relative;
   display: block;
@@ -71,18 +60,30 @@
 }
 
 .call__input:focus {
-  border: 1px solid #019ec4;
+  box-shadow: 0 0 0 1px $accent;
 }
 
 .call__input:focus,
 .call__input:focus::placeholder {
   color: #019ec4;
-
 }
 
 .call__input::placeholder {
   color: #000000;
   font-size: 18px;
+}
+
+.call__input--error {
+  box-shadow: 0 0 0 1px $error;
+  color: $error;
+}
+
+.call__input--error::placeholder {
+  color: $error;
+}
+
+.call__input--success {
+  color: $accent;
 }
 
 .call__checkbox-label {
@@ -103,9 +104,8 @@
   box-shadow: 0 5px 15px 5px rgba(0, 0, 0, 0.05);
 }
 
-.call__checkbox:focus + .call__checkbox-label::before{
-  border: 1px solid #019ec4;
-}
+// .call__checkbox:focus + .call__checkbox-label::before{
+// }
 
 .call__checkbox:checked + .call__checkbox-label::after {
   content: "";
@@ -132,7 +132,6 @@
   }
 
   .call__input::placeholder {
-    color: #000000;
     font-size: 21px;
   }
 }
