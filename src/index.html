@@ -262,16 +262,15 @@
             <button class="popup__close close-button-js" aria-label="Закрыть окно"></button>
             <h2 class="popup__heading">Обратный звонок</h2>
             <p class="popup__text">Оставьте заявку и&nbsp;мы свяжемся с&nbsp;вами в&nbsp;течение 15&nbsp;минунт и&nbsp;ответим на все вопросы</p>
-            <form class="popup__form call" action="">
-              <!-- Здесь маска будет -->
+            <form class="popup__form call" method="post" enctype="multipart/form-data" action="#">
               <ul class="call__list">
-                <li class="call__item call__item--error">
+                <li class="call__item">
                   <label class="call__label" for="tel">Телефон*</label>
-                  <input class="call__input call__input--phone-number-js" type="tel" name="tel" id="tel" placeholder="+7 (___) ___-__-__">
+                  <input class="call__input" type="tel" name="tel" id="tel" placeholder="+7 (___) ___-__-__" required>
                 </li>
-                <li class="call__item call__item--success">
+                <li class="call__item">
                   <label class="call__label" for="name">Имя*</label>
-                  <input class="call__input" type="text" name="name" id="name" placeholder="Ваше имя">
+                  <input class="call__input" type="text" name="name" id="name" placeholder="Ваше имя" required>
                 </li>
                 <li class="call__item call__item--consent">
                   <input class="call__checkbox visually-hidden" type="checkbox" name="consent" id="consent">

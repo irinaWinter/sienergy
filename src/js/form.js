@@ -11,15 +11,18 @@ import Inputmask from "inputmask";
     buttonCallbackClickHandler: function () {
       window.popup.open(callback);
 
-      var phoneNumber = document.querySelector('.call__input--phone-number-js');
+      window.form.userName = document.querySelector('.call__input[name=name]');
+      window.form.phoneNumber = document.querySelector('.call__input[name=tel]');
 
       var im = new Inputmask('+7 (999) 999-99-99');
-      im.mask(phoneNumber);
+      im.mask(window.form.phoneNumber);
 
       const buttonSubmit = document.querySelector('.popup__button');
 
       buttonSubmit.addEventListener('click', buttonSubmitClickHandler);
-    }
+    },
+    phoneNumber: '',
+    userName: ''
   };
 
   buttonCallback.addEventListener('click', window.form.buttonCallbackClickHandler);
@@ -30,13 +33,11 @@ import Inputmask from "inputmask";
     .querySelector('.popup');
   const successMessage = successMessageTemplate.cloneNode(true);
 
-  const submitForm = (evt) => {
-    evt.preventDefault();
-    window.popup.close(callback);
-    window.popup.open(successMessage);
+  const submitForm = () => {
+    window.validation.validateFields();
   };
 
-  const buttonSubmitClickHandler = (evt) => {
-    submitForm(evt);
+  const buttonSubmitClickHandler = () => {
+    submitForm();
   };
 })();
