@@ -20,7 +20,7 @@
   };
 
   window.popup = {
-    open: function (popup) {
+    open (popup) {
       main.appendChild(popup);
 
       const buttonsClose = document.querySelectorAll('.close-button-js');
@@ -34,7 +34,7 @@
         popupKeydownHandler(evt, popup);
       });
     },
-    close: function (popup) {
+    close (popup) {
       popup.remove();
     }
   };  

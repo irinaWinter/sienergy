@@ -8,7 +8,7 @@ import Inputmask from "inputmask";
   const buttonCallback = document.querySelector('.user-menu__callback-button');
 
   window.form = {
-    buttonCallbackClickHandler: function () {
+    buttonCallbackClickHandler () {
       window.popup.open(callback);
 
       window.form.userName = document.querySelector('.call__input[name=name]');

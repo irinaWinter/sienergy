@@ -1,11 +1,11 @@
 (function () {
   window.validation = {
-    validateFields: function () {
+    validateFields () {
       window.validation.showInvalidField(window.form.phoneNumber);
       window.validation.showInvalidField(window.form.userName);
       window.validation.checkPnoneNumberField();
     },
-    checkPnoneNumberField: function () {
+    checkPnoneNumberField () {
       if (window.form.phoneNumber.value.indexOf('_') > -1) {
         window.form.phoneNumber.setCustomValidity('Вы не заполнили поле до конца');
         window.form.phoneNumber.classList.remove('call__input--success');
@@ -14,7 +14,7 @@
         window.form.phoneNumber.setCustomValidity('');
       }
     },
-    showInvalidField: function (field) {
+    showInvalidField (field) {
       if (!field.checkValidity()) {
         field.classList.add('call__input--error');
       } else {

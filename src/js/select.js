@@ -22,7 +22,7 @@
     changeValue(evt, optionsList, selected, optionsContainer);
   }
 
-  window.makeSelect = function (select) {
+  window.makeSelect = (select) => {
     const selected = select.querySelector('.select__selected');
     const optionsContainer = select.querySelector('.select__options');
     const optionsList = select.querySelector('.select__options');
