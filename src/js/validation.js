@@ -12,6 +12,7 @@
         window.form.phoneNumber.classList.add('call__input--error');
       } else {
         window.form.phoneNumber.setCustomValidity('');
+        console.log('hjg');
       }
     },
     showInvalidField (field) {

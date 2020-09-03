@@ -1,0 +1,40 @@
+.burger {
+  position: absolute;
+  left: -16px;
+  display: block;
+  width: 16px;
+  height: 1px;
+  background-color: #707070;
+}
+
+.burger::before,
+.burger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 16px;
+  height: 1px;
+  background-color: #707070;
+}
+
+.burger::before {
+  top: 4px;
+}
+
+.burger::after {
+  top: -4px;
+}
+
+.burger--open {
+  background-color: transparent;
+}
+
+.burger--open::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.burger--open::after {
+  top: 0;
+  transform: rotate(-45deg);
+}

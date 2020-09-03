@@ -89,10 +89,11 @@ const plugins = () => {
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: path.resolve(__dirname, 'src/logo.svg'), to: path.resolve(__dirname, 'dist') },
-        { from: path.resolve(__dirname, 'src/water.png'), to: path.resolve(__dirname, 'dist') },
-        { from: path.resolve(__dirname, 'src/vk-icon.svg'), to: path.resolve(__dirname, 'dist') },
-        { from: path.resolve(__dirname, 'src/fb-icon.svg'), to: path.resolve(__dirname, 'dist') },
+        // { from: path.resolve(__dirname, 'src/logo.svg'), to: path.resolve(__dirname, 'dist') },
+        // { from: path.resolve(__dirname, 'src/water.png'), to: path.resolve(__dirname, 'dist') },
+        // { from: path.resolve(__dirname, 'src/vk-icon.svg'), to: path.resolve(__dirname, 'dist') },
+        // { from: path.resolve(__dirname, 'src/fb-icon.svg'), to: path.resolve(__dirname, 'dist') },
+        { from: path.resolve(__dirname, 'src'), to: path.resolve(__dirname, 'dist') },
         { from: path.resolve(__dirname, 'src/img'), to: path.resolve(__dirname, 'dist') }
       ]
     })
@@ -132,6 +133,11 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: jsLoaders()
+      },
+      {
         test: /\.(png|jpg|svg)$/,
         loader: 'file-loader',
         options: {
@@ -151,42 +157,9 @@ module.exports = {
         use: cssLoaders('sass-loader')
       },
       {
-        test: /\.(png|jpg|svg)$/,
-        use: ['file-loader']
-      },
-      {
         test: /\.(ttf|woff|woff2)$/,
         use: ['file-loader']
-      },
-      // {
-      //   test: /\.xml$/,
-      //   use: ['xml-loader']
-      // },
-      // {
-      //   test: /\.csv$/,
-      //   use: ['csv-loader']
-      // },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: jsLoaders()
       }
-      // {
-      //   test: /\.ts$/,
-      //   exclude: /node_modules/,
-      //   loader: {
-      //     loader: 'babel-loader',
-      //     options: babaelOptions('@babel/preset-typescript')
-      //   }
-      // },
-      // {
-      //   test: /\.jsx$/,
-      //   exclude: /node_modules/,
-      //   loader: {
-      //     loader: 'babel-loader',
-      //     options: babaelOptions('@babel/preset-react')
-      //   }
-      // }
     ]
   }
 }
