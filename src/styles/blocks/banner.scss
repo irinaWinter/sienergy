@@ -1,0 +1,29 @@
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.banner__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.banner__switches {
+  margin: -105px 0 0;
+}
+
+@media (min-width: $tablet-width) {
+  .banner__switches {
+    margin-top: -116px;
+    margin-bottom: 77px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .banner__list {
+    overflow: hidden;
+    width: 100%;
+  }
+}

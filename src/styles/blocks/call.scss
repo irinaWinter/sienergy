@@ -1,0 +1,134 @@
+.call {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.call__list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.call__item {
+  &:not(.call__item--consent) {
+    flex-grow: 1;
+  }
+
+  &:not(.call__item--consent):nth-child(2n) {
+    margin-top: 45px;
+  }
+
+  &:hover .call__input::placeholder,
+  &:focus .call__input::placeholder,
+  &:hover .call__input,
+  &:focus .call__input,
+  &:active .call__input::placeholder,
+  &:active .call__input {
+    color: $accent;
+  }
+
+  &--consent {
+    display: flex;
+    align-items: center;
+    margin-top: 26px;
+  }
+}
+
+.call__label {
+  position: relative;
+  display: block;
+  padding-left: 25px;
+}
+
+.call__checkbox-label,
+.call__label {
+  color: #848484;
+  font-size: 12px;
+}
+
+.call__input {
+  width: 100%;
+  margin: -30px -25px -20px 0;
+  padding: 40px 25px 10px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  color: $accent;
+
+  &:hover {
+    box-shadow: none;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 1px $accent;
+  }
+
+  &:focus,
+  &:focus::placeholder {
+    color: $accent;
+  }
+
+  &::placeholder {
+    color: $black;
+    font-size: 18px;
+  }
+
+  &--error {
+    box-shadow: 0 0 0 1px $error;
+    color: $error;
+  }
+
+  &--error::placeholder {
+    color: $error;
+  }
+}
+
+.call__checkbox-label {
+  padding-left: 50px;
+  line-height: 21px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    content: "";
+    left: 0;
+    width: 30px;
+    height: 30px;
+    box-shadow: 0 5px 15px 5px rgba(0, 0, 0, 0.05);
+  }
+}
+
+.call__checkbox:checked + .call__checkbox-label::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  width: 18px;
+  height: 21px;
+  background-image: url("../img/checked.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@media (min-width: $tablet-width) {
+  .call__item:not(.call__item--consent):nth-child(2n) {
+    margin-top: 0;
+    margin-left: 20px;
+  }
+
+  .call__input {
+    flex-grow: 1;
+    margin: -30px -25px -20px 0;
+    padding: 40px 25px 10px;
+    font-size: 21px;
+
+    &::placeholder {
+      font-size: 21px;
+    }
+  }
+}

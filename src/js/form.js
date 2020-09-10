@@ -19,7 +19,9 @@ import Inputmask from "inputmask";
 
       const buttonSubmit = document.querySelector('.popup__button');
 
-      buttonSubmit.addEventListener('click', buttonSubmitClickHandler);
+      buttonSubmit.addEventListener('click', function (evt) {
+        buttonSubmitClickHandler(evt);
+      });
     },
     phoneNumber: '',
     userName: ''
@@ -27,17 +29,53 @@ import Inputmask from "inputmask";
 
   buttonCallback.addEventListener('click', window.form.buttonCallbackClickHandler);
 
+  // Валидация
+  const phoneNumberFieldKeydownHandler = () => {
+    if (window.form.phoneNumber.value.match(/\d/g).length === 11) {
+      window.form.phoneNumber.classList.remove('call__input--error');
+    }
+  };
+
+  const userNameFieldKeydownHandler = () => {
+    if (window.form.userName.value.trim()) {
+      window.form.userName.classList.remove('call__input--error');
+    }
+  }
+
+  const validateForm = () => {
+    if (!number || number.length < 11) {
+      window.form.phoneNumber.classList.add('call__input--error');
+      window.form.phoneNumber.addEventListener('keydown', phoneNumberFieldKeydownHandler);
+    }
+
+    if (!window.form.userName.value.trim()) {
+      window.form.userName.classList.add('call__input--error');
+      window.form.userName.addEventListener('keydown', userNameFieldKeydownHandler);
+    } 
+  };
+  
+  let number;
+
+  const buttonSubmitClickHandler = (evt) => {
+    evt.preventDefault();
+
+    number = window.form.phoneNumber.value.match(/\d/g);
+ 
+    if (!number || number.length < 11 || !window.form.userName.value.trim()) {
+      validateForm();
+    } else {
+      showSuccessMessage();
+    }
+  };
+
   // Сообщение об успешной отправке заявки
   const successMessageTemplate = document.querySelector('#successful-request')
     .content
     .querySelector('.popup');
   const successMessage = successMessageTemplate.cloneNode(true);
 
-  const submitForm = () => {
-    window.validation.validateFields();
-  };
-
-  const buttonSubmitClickHandler = () => {
-    submitForm();
+  const showSuccessMessage = () => {
+    window.popup.close(callback);
+    window.popup.open(successMessage);
   };
 })();

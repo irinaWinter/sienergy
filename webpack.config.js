@@ -1,11 +1,10 @@
 const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
-const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserWebpackPlugin = require('terser-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
@@ -27,7 +26,7 @@ const optimization = () => {
   return config
 }
 
-const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
+const filename = ext => `[name].${ext}`
 
 const cssLoaders = extra => {
   const loaders = [
@@ -36,50 +35,35 @@ const cssLoaders = extra => {
       options: {
         hmr: isDev,
         reloadAll: true
-      },
+      }
     },
     'css-loader'
   ]
 
   if (extra) {
-    loaders.push(extra)
+    loaders.push(extra);
   }
 
   return loaders
 }
 
-const babaelOptions = preset => {
-  const opts = {
-    presets: [
-      '@babel/preset-env',
-    ],
-    plugins: [
-      '@babel/plugin-proposal-class-properties'
-    ]
-  }
-
-  if (preset) {
-    opts.presets.push(preset)
-  }
-
-  return opts
-}
-
-const jsLoaders = () => {
-  const loaders = [{
-    loader: 'babel-loader',
-    options: babaelOptions()
-  }]
-
-  if (isDev) {
-    loaders.push('eslint-loader')
-  }
-
-  return loaders
-}
-
-const plugins = () => {
-  const base = [
+module.exports = {
+  context: path.resolve(__dirname, 'src'),
+  mode: 'development',
+    entry: {
+    main: ['@babel/polyfill', './js/index.js']
+  },
+  output: {
+    filename: filename('js'),
+    path: path.resolve(__dirname, 'dist')
+  },
+  optimization: optimization(),
+  devServer: {
+    port: 4200,
+    hot: isDev
+  },
+  devtool: isDev ? 'source-map' : '',
+  plugins: [
     new HTMLWebpackPlugin({
       template: './index.html'
     }),
@@ -89,76 +73,52 @@ const plugins = () => {
     }),
     new CopyWebpackPlugin({
       patterns: [
-        // { from: path.resolve(__dirname, 'src/logo.svg'), to: path.resolve(__dirname, 'dist') },
-        // { from: path.resolve(__dirname, 'src/water.png'), to: path.resolve(__dirname, 'dist') },
-        // { from: path.resolve(__dirname, 'src/vk-icon.svg'), to: path.resolve(__dirname, 'dist') },
-        // { from: path.resolve(__dirname, 'src/fb-icon.svg'), to: path.resolve(__dirname, 'dist') },
-        { from: path.resolve(__dirname, 'src'), to: path.resolve(__dirname, 'dist') },
-        { from: path.resolve(__dirname, 'src/img'), to: path.resolve(__dirname, 'dist') }
+        { from: path.resolve(__dirname, 'src/static'), to: path.resolve(__dirname, 'dist/static') }
       ]
     })
-  ]
-
-  if (isProd) {
-    base.push(new BundleAnalyzerPlugin())
-  }
-
-  return base
-}
-
-module.exports = {
-  context: path.resolve(__dirname, 'src'),
-  mode: 'development',
-  entry: ['@babel/polyfill', './index.js'],
-  output: {
-    filename: filename('js'),
-    path: path.resolve(__dirname, 'dist')
-  },
-  resolve: {
-    extensions: ['.js', '.json', '.jpg'],
-    alias: {
-      '@models': path.resolve(__dirname, 'src/models'),
-      '@': path.resolve(__dirname, 'src'),
-      '@img': path.resolve(__dirname, './img'),
-    }
-  },
-  optimization: optimization(),
-  devServer: {
-    port: 4200,
-    hot: isDev,
-    overlay: true
-  },
-  devtool: isDev ? 'source-map' : '',
-  plugins: plugins(),
+  ],
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: jsLoaders()
-      },
-      {
-        test: /\.(png|jpg|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-        }  
-      },
-      {
         test: /\.css$/,
         use: cssLoaders()
-      },
-      {
-        test: /\.less$/,
-        use: cssLoaders('less-loader')
       },
       {
         test: /\.s[ac]ss$/,
         use: cssLoaders('sass-loader')
       },
       {
+        test: /\.(png|jpg|jpeg|svg|gif)$/,
+        loader: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'img'
+          }
+        }
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env'
+            ],
+            plugins: [
+              '@babel/plugin-proposal-class-properties'
+            ]
+          }
+        } 
+      },
+      {
         test: /\.(ttf|woff|woff2)$/,
-        use: ['file-loader']
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ]
       }
     ]
   }

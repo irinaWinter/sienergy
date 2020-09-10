@@ -1,0 +1,27 @@
+.success {
+  padding-bottom: 250px;
+
+  &--request {
+    background-image:
+      linear-gradient(160deg, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 0) 55%),
+      url("../img/bird.png");
+    background-repeat: no-repeat;
+    background-size: 270px auto;
+    background-position: right 66% bottom -70px;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .success {
+    padding-bottom: 375px;
+
+    &--request {
+      background-image:
+        linear-gradient(160deg, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 0) 55%),
+        url("../img/bird.png");
+      background-repeat: no-repeat;
+      background-size: 463px 636px;
+      background-position: right 66% bottom -145px;
+    }
+  }
+}

@@ -1,1 +1,0 @@
-!function(){const e="Escape",o=document.querySelector(".page-main");window.popup={open(n){o.appendChild(n);document.querySelectorAll(".close-button-js").forEach((function(e){e.addEventListener("click",(function(){(e=>{window.popup.close(e)})(n)}))})),window.addEventListener("keydown",(function(o){((o,n)=>{o.key===e&&window.popup.close(n)})(o,n)}))},close(e){e.remove()}}}();

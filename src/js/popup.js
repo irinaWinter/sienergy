@@ -1,10 +1,6 @@
 (function () {
   const key = {
     esc: 'Escape'
-  //   enter: 'Enter',
-  //   tab: 'Tab',
-  //   leftClick: 0,
-  //   leftButton: 1
   };
 
   const main = document.querySelector('.page-main');

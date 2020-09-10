@@ -1,0 +1,21 @@
+@media (min-width: $desktop-width) {
+  .slogan__text {
+    position: relative;
+    margin: 0;
+    padding-left: 27px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 16px;
+      height: 14px;
+      background-image: url("../img/heart.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+}
