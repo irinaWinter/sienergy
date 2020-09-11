@@ -1,18 +1,29 @@
 (function () {
-  const mobileMenuTemplate = document.querySelector('#mobile-menu')
-    .content
-    .querySelector('.popup');
-  const mobileMenu = mobileMenuTemplate.cloneNode(true);
+  const mobileMenu = document.querySelector('.mobile-menu')
+
   const buttonMenu = document.querySelector('.page-menu__button');
+  
+  const closeMenu = () => {
+    mobileMenu.classList.add('hidden');
+  }
+
+  const buttonCloseClickHandler = () => {
+    closeMenu();
+  };
+
+  const buttonCallbackClickHandler = () => {
+    closeMenu();
+    window.form.buttonCallbackClickHandler();
+  }
 
   const buttonMenuClickHandler = () => {
-    window.popup.open(mobileMenu);
+    mobileMenu.classList.remove('hidden');
 
-    const languageSelect = document.querySelector('.mobile-menu__language-select');
-    window.makeSelect(languageSelect);
+    const buttonClose = mobileMenu.querySelector('.close-button-js');
+    buttonClose.addEventListener('click', buttonCloseClickHandler);
 
     const buttonCallback = document.querySelector('.mobile-menu__callback-button');
-    buttonCallback.addEventListener('click', window.form.buttonCallbackClickHandler);
+    buttonCallback.addEventListener('click', buttonCallbackClickHandler);
   };
 
   buttonMenu.addEventListener('click', buttonMenuClickHandler);

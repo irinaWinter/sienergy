@@ -40,4 +40,7 @@
 
   const languageSelectHeader = document.querySelector('.header__language-select');
   window.makeSelect(languageSelectHeader);
+
+  const languageSelectMobileMenu = document.querySelector('.mobile-menu__language-select');
+  window.makeSelect(languageSelectMobileMenu);
 })();
