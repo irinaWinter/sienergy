@@ -1,6 +1,10 @@
 .header {
+  position: relative;
+  z-index: 1;
   overflow: hidden;
   background-color: #fdfdfe;
+  background-image: linear-gradient($white, #f7f7f7);
+  box-shadow: 0 5px 15px 5px rgba(0, 0, 0, 0.03);
 }
 
 .header__container {

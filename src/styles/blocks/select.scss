@@ -64,6 +64,8 @@
 }
 
 .select__options.select__active + .select__selected {
+  text-decoration: underline dotted $black;
+  
   &::before {
     background-image: url("../img/globe-active.svg");
     background-repeat: no-repeat;
