@@ -1,6 +1,7 @@
-(function () {
-  const mobileMenu = document.querySelector('.mobile-menu')
+'use strict';
 
+(function () {
+  const mobileMenu = document.querySelector('.mobile-menu');
   const buttonMenu = document.querySelector('.page-menu__button');
   
   const closeMenu = () => {

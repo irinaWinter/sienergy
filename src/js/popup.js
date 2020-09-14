@@ -1,6 +1,8 @@
+'use strict';
+
 (function () {
-  const key = {
-    esc: 'Escape'
+  const Key = {
+    ESC: 'Escape'
   };
 
   const main = document.querySelector('.page-main');
@@ -10,7 +12,7 @@
   };
 
   const popupKeydownHandler = (evt, popup) => {
-    if (evt.key === key.esc) {
+    if (evt.key === Key.ESC) {
       window.popup.close(popup);
     }
   };

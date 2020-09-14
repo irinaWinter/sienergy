@@ -1,8 +1,10 @@
+'use strict';
+
 (function() {
-  const classActive = 'select__active';
+  const CLASS_ACTIVE = 'select__active';
 
   const toggleActive = (optionsContainer) => {
-    optionsContainer.classList.toggle(classActive);
+    optionsContainer.classList.toggle(CLASS_ACTIVE);
   };
 
   const selectedClickHandler = (optionsContainer) => {
@@ -14,7 +16,7 @@
 
     if (selectLabel || optionsList.contains(selectLabel)) {
       selected.textContent = selectLabel.textContent;
-      optionsContainer.classList.remove(classActive);
+      optionsContainer.classList.remove(CLASS_ACTIVE);
     }
   };
 
